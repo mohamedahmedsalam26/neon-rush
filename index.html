@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أكاديمية KTG لتعليم اللغات والبرمجة ومهارات الكمبيوتر في أبو المطامير، البحيرة">
+    <title>أكاديمية KTG التعليمية</title>
+
+    <style>
+        /* الإعدادات العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172b4d;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* القائمة العلوية */
+        header {
+            background: #061b35;
+            color: white;
+            padding: 18px 0;
+            border-bottom: 3px solid #ffc247;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #ffc247;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav ul a {
+            color: white;
+            transition: 0.3s;
+        }
+
+        nav ul a:hover {
+            color: #ffc247;
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            background: linear-gradient(135deg, #061b35, #103c70);
+            color: white;
+            padding: 75px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .small-title {
+            color: #ffc247;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            line-height: 1.5;
+            margin: 12px 0;
+        }
+
+        .hero h1 span {
+            color: #ffc247;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #e1eafa;
+            margin-bottom: 25px;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+            border: 3px solid #ffc247;
+            box-shadow: 0 15px 35px #0005;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffc247;
+            color: #061b35;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        /* العناوين */
+        .section {
+            padding: 65px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #08294f;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #61718a;
+        }
+
+        /* الكورسات */
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px #10294d12;
+            transition: 0.3s;
+            border: 1px solid #e2eaf5;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px #10294d20;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .course-info {
+            padding: 22px;
+        }
+
+        .course-info h3 {
+            color: #0a3c70;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .course-info p {
+            color: #61718a;
+            margin-bottom: 15px;
+        }
+
+        .course-info ul {
+            list-style: none;
+        }
+
+        .course-info li::before {
+            content: "✓ ";
+            color: #d99b19;
+            font-weight: bold;
+        }
+
+        /* من نحن */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: #08294f;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #53657e;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        /* المميزات */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px 18px;
+            background: white;
+            border-radius: 12px;
+            border-bottom: 4px solid #ffc247;
+        }
+
+        .feature .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            color: #0a3c70;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #61718a;
+        }
+
+        /* التواصل */
+        .contact {
+            background: #e8eff8;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px #10294d12;
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .contact-box strong {
+            color: #0a3c70;
+        }
+
+        /* التذييل */
+        footer {
+            background: #061b35;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        footer .footer-logo {
+            color: #ffc247;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        footer p {
+            margin-top: 8px;
+            color: #d8e2f0;
+        }
+
+        /* توافق الموقع مع الموبايل */
+        @media (max-width: 850px) {
+            .hero-content,
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .courses,
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .courses,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 45px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section-title h2 {
+                font-size: 26px;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 14px;
+            }
+
+            .contact-box {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- القائمة الرئيسية -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">
+                    KTG <span>Academy</span> 🎓
+                </a>
+
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#courses">الكورسات</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#features">مميزاتنا</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <div class="small-title">مرحبًا بكم في KTG Academy</div>
+
+                <h1>
+                    طريقك نحو <span>مستقبل أفضل</span> يبدأ من هنا!
+                </h1>
+
+                <p>
+                    في أكاديمية KTG، نؤمن أن التعلم هو مفتاح النجاح.
+                    اكتشف عالم اللغات والبرمجة والكمبيوتر،
+                    وابدأ رحلتك في تطوير مهاراتك واكتساب المعرفة
+                    التي تساعدك على تحقيق أهدافك.
+                </p>
+
+                <a href="#courses" class="btn">
+                    اكتشف الكورسات
+                </a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85"
+                    alt="لابتوب يستخدم في البرمجة وتصميم المواقع">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الكورسات -->
+    <section class="section" id="courses">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>الكورسات التعليمية</h2>
+                <p>
+                    اكتشف المجالات التي تساعدك على تنمية مهاراتك
+                    والاستعداد للمستقبل.
+                </p>
+            </div>
+
+            <div class="courses">
+
+                <div class="course-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=85"
+                        alt="كتب للتعلم والدراسة">
+
+                    <div class="course-info">
+                        <h3>🌍 قسم اللغات</h3>
+                        <p>
+                            طوّر مهاراتك في التواصل وتعلّم لغات جديدة
+                            تساعدك في الدراسة والعمل.
+                        </p>
+                        <ul>
+                            <li>اللغة الإنجليزية</li>
+                            <li>اللغة الألمانية والفرنسية</li>
+                            <li>المحادثة والاستماع والكتابة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85"
+                        alt="كمبيوتر محمول للتعلم والعمل">
+
+                    <div class="course-info">
+                        <h3>💻 البرمجة وتصميم المواقع</h3>
+                        <p>
+                            ابدأ رحلتك في عالم التكنولوجيا وتعلّم
+                            كيفية إنشاء صفحات ومواقع الإنترنت.
+                        </p>
+                        <ul>
+                            <li>HTML وCSS</li>
+                            <li>JavaScript</li>
+                            <li>أساسيات البرمجة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=85"
+                        alt="أجهزة الكمبيوتر والعمل الجماعي">
+
+                    <div class="course-info">
+                        <h3>🖥️ الكمبيوتر والمهارات الرقمية</h3>
+                        <p>
+                            اكتسب المهارات الأساسية لاستخدام
+                            الكمبيوتر والتعامل مع الأدوات الرقمية.
+                        </p>
+                        <ul>
+                            <li>أساسيات الكمبيوتر</li>
+                            <li>برامج Microsoft Office</li>
+                            <li>مهارات الإنترنت</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- من نحن -->
+    <section class="section about" id="about">
+        <div class="container about-content">
+
+            <div class="about-text">
+                <h2>من نحن؟</h2>
+
+                <p>
+                    أكاديمية KTG هي وجهة تعليمية تهدف إلى مساعدة
+                    المتعلمين على اكتساب المعرفة وتطوير المهارات
+                    في مجالات اللغات والبرمجة والتكنولوجيا.
+                </p>
+
+                <p>
+                    نسعى إلى تشجيع التعلم المستمر وتنمية التفكير
+                    الإبداعي، ومساعدة كل متدرب على اكتشاف قدراته
+                    والعمل نحو تحقيق أهدافه المستقبلية.
+                </p>
+
+                <p>
+                    <strong>رؤيتنا:</strong>
+                    المساهمة في إعداد جيل يمتلك المهارات والمعرفة
+                    اللازمة لمواكبة التطور.
+                </p>
+
+                <p>
+                    <strong>رسالتنا:</strong>
+                    توفير تجربة تعليمية مشجعة تجمع بين المعرفة
+                    وتطوير المهارات والتطبيق العملي.
+                </p>
+            </div>
+
+            <div class="about-image">
+                <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=85"
+                    alt="بيئة تعليمية وتدريبية">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- مميزات الأكاديمية -->
+    <section class="section" id="features">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>لماذا تختار أكاديمية KTG؟</h2>
+                <p>خطواتك نحو التعلم تبدأ باختيار المجال المناسب لك.</p>
+            </div>
+
+            <div class="features">
+
+                <div class="feature">
+                    <div class="icon">🎯</div>
+                    <h3>تطوير المهارات</h3>
+                    <p>
+                        اهتم بتطوير قدراتك واكتساب مهارات
+                        جديدة تساعدك في رحلتك التعليمية.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="icon">📚</div>
+                    <h3>تنوع المجالات</h3>
+                    <p>
+                        تعرّف على مجالات مختلفة في اللغات
+                        والبرمجة والكمبيوتر.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <div class="icon">🚀</div>
+                    <h3>طموح للمستقبل</h3>
+                    <p>
+                        ابدأ في بناء معرفتك واستعد
+                        لفرص التعلم والعمل المستقبلية.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- تواصل معنا -->
+    <section class="section contact" id="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <p>
+                    يسعدنا أن تكون أكاديمية KTG جزءًا من رحلتك التعليمية.
+                </p>
+            </div>
+
+            <div class="contact-box">
+                <p>
+                    <strong>🏫 اسم الأكاديمية:</strong>
+                    KTG Academy
+                </p>
+
+                <p>
+                    <strong>📍 العنوان:</strong>
+                    محافظة البحيرة، أبو المطامير، شارع المحكمة.
+                </p>
+
+                <p>
+                    تواصل معنا لمعرفة الكورسات المتاحة
+                    ومواعيد الدراسة وطرق الاشتراك.
+                </p>
+
+                <!-- أضف رقم الهاتف أو روابط التواصل الحقيقية هنا -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- نهاية الصفحة -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">KTG Academy 🎓</div>
+
+            <p>
+                تعلّم اليوم، واصنع مستقبلك غدًا!
+            </p>
+
+            <p>
+                جميع الحقوق محفوظة © KTG Academy
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
